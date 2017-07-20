@@ -1,8 +1,6 @@
-'use strict';
-
 var React = require('react');
 var ReactNative = require('react-native');
-var Slider = require('../src/Slider');
+var Slider = require('../src/Slider').default;
 var {
   AppRegistry,
   StyleSheet,
@@ -10,6 +8,7 @@ var {
   ScrollView,
   View,
   SliderIOS,
+  TouchableOpacity
 } = ReactNative;
 
 var DEFAULT_VALUE = 0.2;
@@ -40,10 +39,7 @@ var SliderContainer = React.createClass({
       if (child.type === Slider
           || child.type === ReactNative.Slider) {
         var value = this.state.value;
-        return React.cloneElement(child, {
-          value: value,
-          onValueChange: (val) => this.setState({value: val}),
-        });
+        return React.cloneElement(child, { });
       } else {
         return child;
       }
@@ -54,7 +50,8 @@ var SliderContainer = React.createClass({
 var SliderExample = React.createClass({
   getInitialState() {
     return {
-      //value: 0.2,
+      value:         50,
+      maximumValue: 50
     };
   },
 
@@ -69,12 +66,16 @@ var SliderExample = React.createClass({
         </SliderContainer>
         <SliderContainer caption='<Slider/> with min, max and custom tints '>
           <Slider
-            minimumValue={-10}
-            maximumValue={42}
+            value={this.state.value}
+            minimumValue={0}
+            maximumValue={this.state.maximumValue}
             minimumTrackTintColor='#1fb28a'
             maximumTrackTintColor='#d3d3d3'
             thumbTintColor='#1a9274'
           />
+          <TouchableOpacity onPress={() => this.setState({maximumValue: 20, value: 20})}>
+            <Text>ResetMaxValue</Text>
+          </TouchableOpacity>
         </SliderContainer>
         <SliderContainer caption='<Slider/> with custom style'>
           <Slider
@@ -247,43 +248,43 @@ var customStyles5 = StyleSheet.create({
     backgroundColor: '#d5d8e8',
   },
   thumb: {
-    width: 20,
-    height: 30,
-    borderRadius: 1,
+    width:           20,
+    height:          30,
+    borderRadius:    1,
     backgroundColor: '#838486',
   }
 });
 
 var customStyles6 = StyleSheet.create({
   track: {
-    height: 14,
-    borderRadius: 2,
+    height:          14,
+    borderRadius:    2,
     backgroundColor: 'white',
-    borderColor: '#9a9a9a',
-    borderWidth: 1,
+    borderColor:     '#9a9a9a',
+    borderWidth:     1,
   },
   thumb: {
-    width: 20,
-    height: 20,
-    borderRadius: 2,
+    width:           20,
+    height:          20,
+    borderRadius:    2,
     backgroundColor: '#eaeaea',
-    borderColor: '#9a9a9a',
-    borderWidth: 1,
+    borderColor:     '#9a9a9a',
+    borderWidth:     1,
   }
 });
 
 var customStyles7 = StyleSheet.create({
   track: {
-    height: 1,
+    height:          1,
     backgroundColor: '#303030',
   },
   thumb: {
-    width: 30,
-    height: 30,
+    width:           30,
+    height:          30,
     backgroundColor: 'rgba(150, 150, 150, 0.3)',
-    borderColor: 'rgba(150, 150, 150, 0.6)',
-    borderWidth: 14,
-    borderRadius: 15,
+    borderColor:     'rgba(150, 150, 150, 0.6)',
+    borderWidth:     14,
+    borderRadius:    15,
   }
 });
 
@@ -291,30 +292,30 @@ var customStyles8 = StyleSheet.create({
   container: {
     height: 30,
   },
-  track: {
-    height: 2,
+  track:     {
+    height:          2,
     backgroundColor: '#303030',
   },
-  thumb: {
-    width: 10,
-    height: 10,
+  thumb:     {
+    width:           10,
+    height:          10,
     backgroundColor: '#31a4db',
-    borderRadius: 10 / 2,
-    shadowColor: '#31a4db',
-    shadowOffset: {width: 0, height: 0},
-    shadowRadius: 2,
-    shadowOpacity: 1,
+    borderRadius:    10 / 2,
+    shadowColor:     '#31a4db',
+    shadowOffset:    {width: 0, height: 0},
+    shadowRadius:    2,
+    shadowOpacity:   1,
   }
 });
 
 var customStyles9 = StyleSheet.create({
   thumb: {
-    width: 30,
-    height: 30,
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 1},
+    width:         30,
+    height:        30,
+    shadowColor:   'black',
+    shadowOffset:  {width: 0, height: 1},
     shadowOpacity: 0.5,
-    shadowRadius: 1,
+    shadowRadius:  1,
   }
 });
 

@@ -1,8 +1,8 @@
-'use strict';
+
 
 import React, {
   PureComponent,
-} from "react";
+} from 'react';
 
 import {
   Animated,
@@ -11,7 +11,7 @@ import {
   PanResponder,
   View,
   Easing
-} from "react-native";
+} from 'react-native';
 
 import PropTypes from 'prop-types';
 
@@ -368,7 +368,7 @@ export default class Slider extends PureComponent {
         trackSize: this._trackSize,
         thumbSize: this._thumbSize,
         allMeasured: true,
-      })
+      });
     }
   };
 
