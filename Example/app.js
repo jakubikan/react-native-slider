@@ -49,10 +49,10 @@ var SliderContainer = React.createClass({
 var SliderExample = React.createClass({
   getInitialState() {
     return {
-      maxInitialValue: 50,
-      maximumValue:    50,
-      value:           49,
-      maximumValue2:   50,
+      value:         50,
+      maximumValue:  50,
+      value1:        49,
+      maximumValue1: 50,
     };
   },
 
@@ -60,30 +60,30 @@ var SliderExample = React.createClass({
     return (
       <ScrollView contentContainerStyle={styles.container}>
 
-        <SliderContainer caption='<Slider/> resetting maxintitialvalue'>
+        <SliderContainer caption='<Slider/> maximumValue still the same the value - slider does not update maximum value'>
           <Slider
-            value={this.state.maxInitialValue}
+            value={this.state.value}
             minimumValue={0}
             maximumValue={this.state.maximumValue}
             minimumTrackTintColor='#1fb28a'
             maximumTrackTintColor='#d3d3d3'
             thumbTintColor='#1a9274'
           />
-          <TouchableOpacity onPress={() => this.setState({maximumValue: 20, maxInitialValue: 20})}>
+          <TouchableOpacity onPress={() => this.setState({maximumValue: 20, value: 20})}>
             <Text>ResetMaxValue</Text>
           </TouchableOpacity>
         </SliderContainer>
 
-        <SliderContainer caption='<Slider/> '>
+        <SliderContainer caption='<Slider/> maximumValue still the same the value - slider does update correctly'>
           <Slider
-            value={this.state.value}
+            value={this.state.value1}
             minimumValue={0}
-            maximumValue={this.state.maximumValue2}
+            maximumValue={this.state.maximumValue1}
             minimumTrackTintColor='#1fb28a'
             maximumTrackTintColor='#d3d3d3'
             thumbTintColor='#1a9274'
           />
-          <TouchableOpacity onPress={() => this.setState({maximumValue2: 20, value: 20})}>
+          <TouchableOpacity onPress={() => this.setState({maximumValue1: 20, value1: 20})}>
             <Text>ResetMaxValue</Text>
           </TouchableOpacity>
         </SliderContainer>
